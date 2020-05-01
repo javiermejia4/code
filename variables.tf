@@ -21,7 +21,7 @@ variable "private_subnet_cidr" {
 variable "ingress_ports" {
     type        = list(number)
     description = "ilst of ingress ports"
-    default     = [80,443]
+    default     = [80,8080]
 }
 
 variable "Name" {
