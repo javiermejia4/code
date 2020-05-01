@@ -1,4 +1,4 @@
-// VPC
+## VPC
 resource "aws_vpc" "default" {
     cidr_block = var.vpc_cidr
     enable_dns_hostnames = true
@@ -8,7 +8,7 @@ resource "aws_vpc" "default" {
     }
 }
 
-// Public Subnet
+## Public Subnet
 resource "aws_subnet" "default" {
     vpc_id     = aws_vpc.default.id
     cidr_block = var.public_subnet_cidr
@@ -18,7 +18,7 @@ resource "aws_subnet" "default" {
     }
 }
 
-// Route Tables
+## Route Tables
 resource "aws_route_table" "default" {
     vpc_id = aws_vpc.default.id
 
@@ -32,14 +32,14 @@ resource "aws_route_table" "default" {
     }
 }
 
-// Route Table Association
-//resource "aws_route_table_association" "default" {
-//  subnet_id = var.public_subnet_cidr.id
-//  route_table_id = var.public_subnet_cidr.id
-//  
-//}
+## Route Table Association
+resource "aws_route_table_association" "default" {
+    subnet_id      = var.subnet_id
+    route_table_id = var.route_table_id
+  
+}
 
-// IGW
+## IGW
 resource "aws_internet_gateway" "default" {
     vpc_id = aws_vpc.default.id
 
@@ -48,7 +48,7 @@ resource "aws_internet_gateway" "default" {
     }
 }
 
-// Security Groups
+## Security Groups
 resource "aws_security_group" "web_traffic" {
     name        = var.Name
     description = "Ingress for Web traffic"
@@ -66,6 +66,7 @@ resource "aws_security_group" "web_traffic" {
    }
 }
 
+## Outputs
 output "checklist" {
   value = [ for i in var.ingress_ports : "Port ${i} expected to be open"]
 }
