@@ -1,1 +1,2 @@
-code
+# Terraform code to create VPC and deploy app to Elasticbeanstalk
+# Still a work in progress...
