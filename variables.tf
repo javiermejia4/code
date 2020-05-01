@@ -4,17 +4,17 @@ variable "aws_region" {
 }
 
 variable "vpc_cidr" {
-    description = "CIDR for the whole VPC"
+    description = "VPC CIDR"
     default = "10.0.0.0/16"
 }
 
 variable "public_subnet_cidr" {
-    description = "CIDR for the Public Subnet"
+    description = "Public Subnet"
     default = "10.0.1.0/24"
 }
 
 variable "private_subnet_cidr" {
-    description = "CIDR for the Private Subnet"
+    description = "Private Subnet"
     default = "10.0.2.0/24"
 }
 
@@ -22,4 +22,9 @@ variable "ingress_ports" {
     type        = list(number)
     description = "ilst of ingress ports"
     default     = [80,443]
+}
+
+variable "Name" {
+    description = "Name"
+    default     = "Non-Default"
 }

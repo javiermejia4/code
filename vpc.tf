@@ -4,7 +4,7 @@ resource "aws_vpc" "default" {
     enable_dns_hostnames = true
 
     tags     = {
-        Name = "DevOps-Challenge-VPC"
+        Name = var.Name
     }
 }
 
@@ -14,7 +14,7 @@ resource "aws_subnet" "default" {
     cidr_block = var.public_subnet_cidr
 
     tags = {
-        Name = "DevOps-Challenge-Public-Subnet"
+        Name = var.Name
     }
 }
 
@@ -28,7 +28,7 @@ resource "aws_route_table" "default" {
     }
 
     tags = {
-        Name = "DevOps-Challenge-Public_Route-Table"
+        Name = var.Name
     }
 }
 
@@ -44,13 +44,13 @@ resource "aws_internet_gateway" "default" {
     vpc_id = aws_vpc.default.id
 
     tags     = {
-        Name = "DevOps-Challenge-IGW"
+        Name = var.Name
     }
 }
 
 // Security Groups
 resource "aws_security_group" "web_traffic" {
-    name        = "DevOps-Challenge-SG"
+    name        = var.Name
     description = "Ingress for Web traffic"
     vpc_id      = aws_vpc.default.id
 
