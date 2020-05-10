@@ -77,6 +77,10 @@ resource "aws_security_group" "allowed_traffic" {
     description = "Ingress Traffic"
     vpc_id = aws_vpc.production-vpc.id
 
+     tags   = {
+       Name = "BlackMamba-SG"
+     }
+
     dynamic "ingress" {
      iterator = port
      for_each = var.ingress_ports
@@ -84,7 +88,7 @@ resource "aws_security_group" "allowed_traffic" {
        from_port   = port.value
        to_port     = port.value
        protocol    = "TCP"
-       cidr_blocks = ["0.0.0.0/0"]
+       cidr_blocks = ["23.243.44.14/32"]
      }
    }
 }

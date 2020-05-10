@@ -31,7 +31,11 @@ variable "private_subnet_2_cidr" {
 variable "ingress_ports" {
     type        = list(number)
     description = "ilst of ingress ports"
-    default     = [80,8080]
+    default     = [22]
+}
+
+variable "key_pair_name" {
+    default = "CloudyKey"
 }
 
 variable "Name" {
