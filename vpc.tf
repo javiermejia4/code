@@ -27,6 +27,26 @@ resource "aws_subnet" "private-subnet-1" {
   }
 }
 
+## Private Subnet 2
+resource "aws_subnet" "private-subnet-2" {
+  cidr_block  = var.private_subnet_2_cidr
+  vpc_id      = aws_vpc.production-vpc.id
+
+  tags        = {
+    Name      = "BlackMamba-Private-Subnet-2"
+  }
+}
+
+## Private Subnet
+resource "aws_subnet" "private-subnet-3" {
+  cidr_block  = var.private_subnet_3_cidr
+  vpc_id      = aws_vpc.production-vpc.id
+
+  tags        = {
+    Name      = "BlackMamba-Private-Subnet-3"
+  }
+}
+
 ## Public Route Table
 resource "aws_route_table" "public-route-table" {
   vpc_id = aws_vpc.production-vpc.id

@@ -28,6 +28,11 @@ variable "private_subnet_2_cidr" {
     default     = "10.0.4.0/24"
 }
 
+variable "private_subnet_3_cidr" {
+    description = "Private Subnet 3 CIDR"
+    default     = "10.0.5.0/24"
+}
+
 variable "ingress_ports" {
     type        = list(number)
     description = "ilst of ingress ports"
@@ -35,7 +40,7 @@ variable "ingress_ports" {
 }
 
 variable "key_pair_name" {
-    default = "CloudyKey"
+    default = "BlackMambaKey"
 }
 
 variable "Name" {
