@@ -36,7 +36,7 @@ variable "private_subnet_3_cidr" {
 variable "ingress_ports" {
     type        = list(number)
     description = "ilst of ingress ports"
-    default     = [22,443]
+    default     = [22]
 }
 
 variable "key_pair_name" {
