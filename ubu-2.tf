@@ -1,4 +1,4 @@
-resource "aws_instance" "ubu-1" {
+resource "aws_instance" "ubu-2" {
   ami                         = "ami-0f56279347d2fa43e"
   instance_type               = "t2.micro"
   key_name                    = var.key_pair_name
