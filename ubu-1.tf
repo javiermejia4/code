@@ -7,7 +7,7 @@ resource "aws_instance" "ubu-1" {
   subnet_id              = aws_subnet.private-subnet-1.id
   vpc_security_group_ids = [aws_security_group.allowed_traffic.id]
 
-  tags   = {
+  tags = {
     Name = "Ubuntu-1"
   }
 }
