@@ -50,8 +50,8 @@ variable "ingress_ports" {
 }
 
 variable "allowed_ips" {
-  type = list(number)
-  default = "45.50.88.178/32"
+  type = list(string)
+  default = ["45.50.88.178/32"]
   description = "Allowed CIDR IPs"
 }
 
