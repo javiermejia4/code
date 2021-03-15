@@ -1,7 +1,7 @@
 locals {
-  service = "Custom VPC"
   owner   = "Me"
   name    = "BlackMamba"
+  service = "Bastion & Custom VPC"
 
   common_tags = {
     owner   = local.owner
