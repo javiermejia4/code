@@ -120,7 +120,8 @@ resource "aws_route" "public-internet-gateway-route" {
 ## security groups
 resource "aws_security_group" "allowed_traffic" {
   vpc_id      = aws_vpc.production-vpc.id
-  description = "BlackMamba security group"
+
+  description = "BlackMamba SG"
 
   tags = merge(
     local.common_tags,
