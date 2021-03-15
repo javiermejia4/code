@@ -10,7 +10,7 @@ resource "aws_instance" "blackmamba-bastion-1" {
   tags = merge(
     local.common_tags,
     {
-      Name  = local.name
+      Name = local.name
     },
   )
 }

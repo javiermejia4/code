@@ -11,7 +11,7 @@ resource "aws_vpc" "production-vpc" {
   )
 }
 
-## Public Subnet
+## public subnet
 resource "aws_subnet" "public-subnet-1" {
   cidr_block = var.public_subnet_1_cidr
   vpc_id     = aws_vpc.production-vpc.id
@@ -24,7 +24,7 @@ resource "aws_subnet" "public-subnet-1" {
   )
 }
 
-## Private Subnet
+## private subnet
 resource "aws_subnet" "private-subnet-1" {
   cidr_block = var.private_subnet_1_cidr
   vpc_id     = aws_vpc.production-vpc.id
@@ -35,10 +35,9 @@ resource "aws_subnet" "private-subnet-1" {
       Name = "BlackMambaPrivateSubnet-1"
     },
   )
-
 }
 
-## Private Subnet 2
+## private subnet 2
 resource "aws_subnet" "private-subnet-2" {
   cidr_block = var.private_subnet_2_cidr
   vpc_id     = aws_vpc.production-vpc.id
@@ -51,7 +50,7 @@ resource "aws_subnet" "private-subnet-2" {
   )
 }
 
-## Private Subnet
+## private subnet 3
 resource "aws_subnet" "private-subnet-3" {
   cidr_block = var.private_subnet_3_cidr
   vpc_id     = aws_vpc.production-vpc.id
@@ -64,7 +63,7 @@ resource "aws_subnet" "private-subnet-3" {
   )
 }
 
-## Public Route Table
+## public route table
 resource "aws_route_table" "public-route-table" {
   vpc_id = aws_vpc.production-vpc.id
 
@@ -76,7 +75,7 @@ resource "aws_route_table" "public-route-table" {
   )
 }
 
-## Private Route Table
+## private route table
 resource "aws_route_table" "private-route-table" {
   vpc_id = aws_vpc.production-vpc.id
 
@@ -88,7 +87,7 @@ resource "aws_route_table" "private-route-table" {
   )
 }
 
-## Route Table Associations
+## route table associations
 resource "aws_route_table_association" "public-subnet-1-association" {
   route_table_id = aws_route_table.public-route-table.id
   subnet_id      = aws_subnet.public-subnet-1.id
@@ -98,6 +97,7 @@ resource "aws_route_table_association" "private-subnet-1-association" {
   route_table_id = aws_route_table.private-route-table.id
   subnet_id      = aws_subnet.private-subnet-1.id
 }
+
 ## IGW
 resource "aws_internet_gateway" "production-igw" {
   vpc_id = aws_vpc.production-vpc.id
@@ -110,16 +110,17 @@ resource "aws_internet_gateway" "production-igw" {
   )
 }
 
+## igw route
 resource "aws_route" "public-internet-gateway-route" {
   route_table_id         = aws_route_table.public-route-table.id
   gateway_id             = aws_internet_gateway.production-igw.id
   destination_cidr_block = "0.0.0.0/0"
 }
 
-## Security Groups
+## security groups
 resource "aws_security_group" "allowed_traffic" {
-  description = "Ingress Traffic"
   vpc_id      = aws_vpc.production-vpc.id
+  description = "BlackMamba security group"
 
   tags = merge(
     local.common_tags,
