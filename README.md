@@ -1,1 +1,1 @@
-# VPC and bastion nodes
+# VPC and bastion node
