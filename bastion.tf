@@ -7,5 +7,10 @@ resource "aws_instance" "blackmamba-bastion-1" {
   subnet_id              = aws_subnet.public-subnet-1.id
   vpc_security_group_ids = [aws_security_group.allowed_traffic.id]
 
-  tags = local.common_tags
+  tags = merge(
+    local.common_tags,
+    {
+      Name  = local.name
+    },
+  )
 }
