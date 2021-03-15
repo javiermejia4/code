@@ -1,5 +1,15 @@
+variable "linux_ami" {
+  default     = "ami-0cf1ef0f7d7421ea7"
+  description = "Linux AMI used"
+}
+
+variable "intance_type" {
+  default     = "t2.micro"
+  description = "Instance type used"
+}
+
 variable "region" {
-  default     = "us-west-1"
+  default     = "us-west-2"
   description = "AWS Region"
 }
 
@@ -35,15 +45,16 @@ variable "private_subnet_3_cidr" {
 
 variable "ingress_ports" {
   type        = list(number)
-  description = "ilst of ingress ports"
+  description = "list of ingress ports"
   default     = [22]
+}
+
+variable "allowed_ips" {
+  type = list(string)
+  default = ["45.50.88.178/32"]
+  description = "Allowed CIDR IPs"
 }
 
 variable "key_pair_name" {
   default = "BlackMambaKey"
-}
-
-variable "Name" {
-  description = "Name"
-  default     = "BlackMamba"
 }

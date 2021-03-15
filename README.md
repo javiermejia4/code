@@ -1,2 +1,1 @@
-# Terraform code to create VPC and other stuff
-# Work in progress...
+# VPC and bastion nodes
