@@ -1,11 +1,12 @@
 locals {
-  service      = "Custom VPC"
-  owner        = "Me"
-  name         = "BlackMamba"
+  service = "Custom VPC"
+  owner   = "Me"
+  name    = "BlackMamba"
 
   common_tags = {
-    owner  = local.owner
-    name   = local.name
+    owner   = local.owner
+    name    = local.name
+    service = local.service
   }
 }
 
@@ -53,14 +54,14 @@ resource "aws_subnet" "private-subnet-3" {
 resource "aws_route_table" "public-route-table" {
   vpc_id = aws_vpc.production-vpc.id
 
-  tags   = local.common_tags
+  tags = local.common_tags
 }
 
 ## Private Route Table
 resource "aws_route_table" "private-route-table" {
   vpc_id = aws_vpc.production-vpc.id
 
-  tags   = local.common_tags
+  tags = local.common_tags
 }
 
 ## Route Table Associations
@@ -102,5 +103,12 @@ resource "aws_security_group" "allowed_traffic" {
       protocol    = "TCP"
       cidr_blocks = var.allowed_ips
     }
+  }
+
+  egress {
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
