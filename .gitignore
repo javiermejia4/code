@@ -7,7 +7,6 @@
 **/*.tfplan
 **/*.tf.disabled
 debuglog.txt
-provider.tf
 **/terraform_plugins/**
 **/.vscode/**
 .idea/
