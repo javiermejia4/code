@@ -8,13 +8,13 @@ resource "aws_instance" "blackmamba-bastion-1" {
 
   subnet_id              = aws_subnet.public-subnet-1.id
   vpc_security_group_ids = [aws_security_group.allowed_traffic.id]
-  
+
   user_data = "sudo apt update && sudo apt upgrade"
 
   tags = merge(
     local.common_tags,
     {
-      Name  = "blackMamba-bastion-${count.index + 1}"
+      Name = "blackMamba-bastion-${count.index + 1}"
     },
   )
 }
