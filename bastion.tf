@@ -1,4 +1,4 @@
-resource "aws_instance" "blackmamba-bastion-1" {
+resource "aws_instance" "blackmamba-bastion" {
   ami                         = var.linux_ami
   instance_type               = var.intance_type
   key_name                    = var.key_pair_name
@@ -14,7 +14,7 @@ resource "aws_instance" "blackmamba-bastion-1" {
   tags = merge(
     local.common_tags,
     {
-      Name = "blackMamba-bastion-${count.index}"
+      Name = "blackMamba-bastion-0${count.index + 1}"
     },
   )
 }
